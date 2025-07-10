@@ -12,7 +12,24 @@ public:
     int minimumTotal(vector<vector<int>>& triangle) {
          int n=triangle.size();
          vector<vector<int>>dp(n,vector<int>(n,-1));
-         return helper(0,0,triangle,dp);
+         dp[0][0]=triangle[0][0];
+         int res=INT_MAX;
+         for(int i=1;i<n;i++)
+         {
+            for(int j=0;j<i+1;j++)
+            {
+                int up= j<i ? triangle[i][j]+dp[i-1][j] : 1e6;
+                int dig = j>0 ? triangle[i][j]+dp[i-1][j-1] : 1e6;
+                dp[i][j]=min(up,dig);
+            }
+         }
+         for(int j=0;j<n;j++)
+         {
+            res=min(res,dp[n-1][j]);
+         }
+        
+        return res;
+        //  return helper(0,0,triangle,dp);
 
     }
 };
