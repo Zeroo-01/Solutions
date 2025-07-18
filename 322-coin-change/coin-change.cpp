@@ -8,14 +8,14 @@ int helper(int ind,int a,vector<int>& coins,vector<vector<int>>&dp)
      return -1;   
     }
     if(dp[ind][a]!=-2)return dp[ind][a];
-    int nottake=helper(ind+1,a,coins,dp);
+    int nottake=0+helper(ind+1,a,coins,dp);
     int take=INT_MAX;
     if(coins[ind]<=a) 
     {
         int res=helper(ind,a-coins[ind],coins,dp);
         if(res!=-1) take=1+res;
     }
-   if(take==INT_MAX&&nottake==-1) return dp[ind][a]=-1;
+//    if(take==INT_MAX&&nottake==-1) return dp[ind][a]=-1;
    if(take==INT_MAX) return dp[ind][a]=nottake;
    if(nottake==-1) return dp[ind][a]=take;
    return dp[ind][a]=min(take,nottake);
