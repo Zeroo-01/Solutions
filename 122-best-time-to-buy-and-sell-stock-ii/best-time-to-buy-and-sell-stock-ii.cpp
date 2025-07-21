@@ -19,16 +19,17 @@ public:
 // }
     int maxProfit(vector<int>& prices) {
         int n=prices.size();
-        vector<int>prev(2,0),curr(2,0);
+        int curr1=0,curr0=0,prev1=0,prev0=0;
         for(int i=n-1;i>=0;i--)
         {
-            curr[1]=max(prev[0]-prices[i],prev[1]);   
-            curr[0]= max(prev[0],prices[i]+prev[1]);
-            prev=curr;
+            curr1=max(prev0-prices[i],prev1);   
+            curr0= max(prev0,prices[i]+prev1);
+            prev1=curr1;
+            prev0=curr0;
         }
             
         
-        return prev[1];
+        return prev1;
         //return helper(0,1,prices,dp);
     }
 };
