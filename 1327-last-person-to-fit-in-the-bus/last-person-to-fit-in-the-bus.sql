@@ -1,0 +1,1 @@
+select person_name from(select person_name ,weight,turn,sum(weight) over(order by turn) as currweight from queue)t where currweight<=1000 order by currweight desc limit 1;
