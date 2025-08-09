@@ -16,7 +16,8 @@ public:
             st.push(i);
         }
         return nse;
-    }vector<int>fpse(vector<int>&arr)
+    }
+    vector<int>fpse(vector<int>&arr)
     {
         int n=arr.size();
         vector<int>pse(n,0);
@@ -40,9 +41,8 @@ public:
         int ans=0;
         for(int i=0;i<n;i++)
         {
-            int left=i-pse[i];
-            int right=nse[i]-i;
-            int height=left+right-1;
+            
+            int height=nse[i]-pse[i]-1;
             int area=arr[i]*height;
             ans=max(ans,area);
         }
