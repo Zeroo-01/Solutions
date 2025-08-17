@@ -14,10 +14,8 @@ public:
     int maxpath(TreeNode* root,int &maxi)
     {
         if(root==NULL) return 0;
-        int left=maxpath(root->left,maxi);
-        if(left<0) left=0;
-        int right=maxpath(root->right,maxi);
-        if(right<0) right=0;
+        int left=max(maxpath(root->left,maxi),0);
+        int right=max(0,maxpath(root->right,maxi));
         maxi=max(maxi,(root->val+left+right));
         return root->val+max(left,right);
     }
